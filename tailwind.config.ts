@@ -65,6 +65,9 @@ export default {
       backdropBlur: {
         xs: "2px",
       },
+      transitionDuration: {
+        '2000': '2000ms',
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
