@@ -21,7 +21,7 @@ export default {
       colors: {
         neurodark: "#1A1F2C",
         neuropurple: "#9b87f5",
-        neuroorange: "#F97316",
+        neuroorange: "#cc9933",
         neurolight: "#FFFFFF",
         neurogray: "#333333",
       },
@@ -35,31 +35,17 @@ export default {
         "scale-in": "scaleIn 0.3s ease-out",
         "typewriter": "typing 3.5s steps(40, end), blink .75s step-end infinite",
         "float": "float 3s ease-in-out infinite",
+        "letter-bounce": "letterBounce 1s ease-in-out infinite",
+        "color-shift": "colorShift 3s ease-in-out forwards",
       },
       keyframes: {
-        slideUp: {
-          "0%": { transform: "translateY(100px)", opacity: "0" },
-          "100%": { transform: "translateY(0)", opacity: "1" },
-        },
-        fadeIn: {
-          "0%": { opacity: "0" },
-          "100%": { opacity: "1" },
-        },
-        scaleIn: {
-          "0%": { transform: "scale(0.9)", opacity: "0" },
-          "100%": { transform: "scale(1)", opacity: "1" },
-        },
-        typing: {
-          "from": { width: "0" },
-          "to": { width: "100%" },
-        },
-        blink: {
-          "from, to": { borderColor: "transparent" },
-          "50%": { borderColor: "white" },
-        },
-        float: {
+        letterBounce: {
           "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-20px)" },
+          "50%": { transform: "translateY(-5px)" },
+        },
+        colorShift: {
+          "0%": { color: "#9b87f5" },
+          "100%": { color: "#cc9933" },
         },
       },
       backdropBlur: {
@@ -67,6 +53,7 @@ export default {
       },
       transitionDuration: {
         '2000': '2000ms',
+        '3000': '3000ms',
       },
     },
   },

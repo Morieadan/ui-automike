@@ -7,33 +7,49 @@ export const Hero = () => {
   const [showContent, setShowContent] = useState(false);
   const [text, setText] = useState('');
   const fullText = 'Gestión Inteligente de Grúas';
+  const [letters, setLetters] = useState<string[]>([]);
+  const title = "NeuroCrane";
 
   useEffect(() => {
-    // Mostrar el título con fade-in
     setShowTitle(true);
+    
+    // Animación secuencial de letras
+    const letterArray = title.split('');
+    let currentIndex = 0;
+    
+    const letterInterval = setInterval(() => {
+      if (currentIndex < letterArray.length) {
+        setLetters(prev => [...prev, letterArray[currentIndex]]);
+        currentIndex++;
+      } else {
+        clearInterval(letterInterval);
+      }
+    }, 200); // 200ms entre cada letra
 
-    // Después de 2 segundos, mostrar el resto del contenido
+    // Mostrar el resto del contenido después de la animación del título
     const contentTimer = setTimeout(() => {
       setShowContent(true);
       
-      // Iniciar el efecto typewriter después de mostrar el contenido
       let currentText = '';
-      let currentIndex = 0;
+      let textIndex = 0;
 
       const typeWriter = setInterval(() => {
-        if (currentIndex < fullText.length) {
-          currentText += fullText[currentIndex];
+        if (textIndex < fullText.length) {
+          currentText += fullText[textIndex];
           setText(currentText);
-          currentIndex++;
+          textIndex++;
         } else {
           clearInterval(typeWriter);
         }
       }, 100);
 
       return () => clearInterval(typeWriter);
-    }, 2000);
+    }, 3000);
 
-    return () => clearTimeout(contentTimer);
+    return () => {
+      clearInterval(letterInterval);
+      clearTimeout(contentTimer);
+    };
   }, []);
 
   return (
@@ -43,16 +59,20 @@ export const Hero = () => {
       <div className="video-hero-placeholder absolute inset-0 bg-black/50" />
       
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
-        {/* Logo/Título principal con fade-in */}
-        <h1 
-          className={`text-6xl md:text-7xl font-montserrat font-bold text-neuropurple mb-12
-                     transition-opacity duration-2000 ease-in-out
-                     ${showTitle ? 'opacity-100' : 'opacity-0'}`}
-        >
-          NeuroCrane
+        <h1 className="text-6xl md:text-7xl font-montserrat font-bold mb-12 flex">
+          {letters.map((letter, index) => (
+            <span
+              key={index}
+              className={`opacity-0 animate-[fadeIn_0.5s_ease-out_forwards] animate-color-shift
+                         ${index === letters.length - 1 && letters.length === title.length ? 'animate-letter-bounce' : ''}
+                       `}
+              style={{ animationDelay: `${index * 0.2}s` }}
+            >
+              {letter}
+            </span>
+          ))}
         </h1>
         
-        {/* Contenido que aparece después del fade-in */}
         {showContent && (
           <>
             <h2 className="text-4xl md:text-6xl font-montserrat font-bold text-white mb-6 
