@@ -59,7 +59,7 @@ export const Hero = () => {
       <div className="video-hero-placeholder absolute inset-0 bg-black/50" />
       
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
-        <h1 className="text-6xl md:text-7xl font-montserrat font-bold mb-12 flex">
+        <h1 className="text-6xl md:text-7xl font-montserrat font-bold mb-12 flex text-neurolight">
           {letters.map((letter, index) => (
             <span
               key={index}

@@ -47,6 +47,17 @@ export default {
           "0%": { color: "#9b87f5" },
           "100%": { color: "#cc9933" },
         },
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        typing: {
+          "0%": { width: "0" },
+          "100%": { width: "100%" },
+        },
+        blink: {
+          "50%": { borderColor: "transparent" },
+        },
       },
       backdropBlur: {
         xs: "2px",
